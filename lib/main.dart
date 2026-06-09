@@ -4,7 +4,7 @@ import 'package:food_arch/repositories/meal_repository_impl.dart';
 import 'package:food_arch/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
   runApp(
     ChangeNotifierProvider(
       create: (context) => MealProvider(mealRepository: MealRepositoryImpl()),
