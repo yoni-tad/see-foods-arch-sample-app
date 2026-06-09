@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:food_arch/providers/meal_provider.dart';
+import 'package:food_arch/repositories/meal_repository_impl.dart';
 import 'package:food_arch/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(
     ChangeNotifierProvider(
-      create: (context) => MealProvider(),
+      create: (context) => MealProvider(mealRepository: MealRepositoryImpl()),
       child: const MyApp(),
     ),
   );

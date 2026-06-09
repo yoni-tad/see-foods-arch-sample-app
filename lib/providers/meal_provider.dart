@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:food_arch/models/meal.dart';
-import 'package:food_arch/services/meal_service.dart';
+import 'package:food_arch/repositories/meal_repository.dart';
 
 class MealProvider extends ChangeNotifier {
-  final MealService _mealService = MealService();
+  final MealRepository _mealRepository;
+
+  MealProvider({required MealRepository mealRepository})
+    : _mealRepository = mealRepository;
 
   List<Meal> _meal = [];
   bool _isLoading = false;
@@ -19,7 +22,7 @@ class MealProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _meal = await _mealService.fetchMeals();
+      _meal = await _mealRepository.getMeal();
     } catch (error) {
       _error = error.toString();
     } finally {
